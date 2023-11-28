@@ -1,7 +1,7 @@
 import './Projects.css'
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { NavLink } from "react-router-dom";
+import PostForm from '../Form/PostForm';
 import { Spinner } from '../Spinner/Spinner';
 
 function Projects() {
@@ -22,14 +22,66 @@ function Projects() {
                 setPending(false); // alla fine si mette lo stato del caricamento in false
             });
 
-        
     }
+
+
+    const handlePostSubmit = async (post) => {
+        try {
+            const response = await fetch('http://localhost:3005/posts/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(post)
+            });
+            if (response.ok) {
+                const responseData = await response.json();
+                console.log('Post creato:', responseData);
+            } else {
+                console.error('Errore nella creazione del post');
+            }
+        } catch (error) {
+            console.error('Errore nel network:', error);
+        }
+    };
+
 
 
 
     return (
         <>
             <div className="grid">
+
+
+                <div className="col-100 flex-end pt-3">
+                    <PostForm onSubmit={handlePostSubmit} />
+                    {/* <div className="over-hidden">
+
+                        <ul className="flex my-categories sma-100 scroll-x">
+
+                            <li><a className="my-button my-button-secondary text-4 text-dark mt-3"> 
+                                
+                            </a></li>
+                        </ul>
+
+                    </div> */}
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 {pending && <Spinner />}{" "}
             </div>
 
