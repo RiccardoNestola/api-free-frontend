@@ -36,10 +36,10 @@
 .form-container button {
     width: 100%;
     padding: 10px 15px;
-    background-color: #0056b3;
+    background: #FF3294;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 50px;
     cursor: pointer;
     font-size: 16px;
 }

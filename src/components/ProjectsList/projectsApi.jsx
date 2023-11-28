@@ -2,12 +2,18 @@ import './Projects.css'
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import PostForm from '../Form/PostForm';
+import Modal from '../Modal/modal'
 import { Spinner } from '../Spinner/Spinner';
 
 function Projects() {
 
     const [data, setData] = useState([]);
     const [pending, setPending] = useState(false);
+    const [isModalOpen, setModalOpen] = useState(false);
+
+    const openModal = () => setModalOpen(true);
+    const closeModal = () => setModalOpen(false);
+
 
     useEffect(() => {
         loadData();
@@ -54,32 +60,25 @@ function Projects() {
 
 
                 <div className="col-100 pt-3">
-                    <PostForm onSubmit={handlePostSubmit} />
-                    {/* <div className="over-hidden">
+
+
+                    
+
+                    <Modal isOpen={isModalOpen} onClose={closeModal}>
+                        <PostForm onSubmit={handlePostSubmit} />
+                    </Modal>
+                    <div className="over-hidden">
 
                         <ul className="flex my-categories sma-100 scroll-x">
 
-                            <li><a className="my-button my-button-secondary text-4 text-dark mt-3"> 
-                                
-                            </a></li>
+                            <li>
+                                <a className="my-button text-4 text-dark mt-3" onClick={openModal}>Aggiungi Post</a>
+                            </li>
                         </ul>
 
-                    </div> */}
+                    </div>
 
                 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
                 {pending && <Spinner />}{" "}
@@ -98,6 +97,7 @@ function Projects() {
                                 <div className="card" >
                                     <img src={item?.image} alt="" />
                                     <h3 className="text-white text-0">{item?.title.slice(0, 40)}</h3>
+                                    {/* <p className="text-white text-0">{item?.content.slice(0, 40)}</p> */}
                                 </div>
                                 
                         </div>

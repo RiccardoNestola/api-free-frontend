@@ -39,7 +39,7 @@ function PostForm({ onSubmit }) {
                     onChange={(e) => setContent(e.target.value)}
                 />
             </div>
-            <button type="submit">Crea Post</button>
+            <button className="my-button my-button-secondary text-4 text-dark mt-3" type="submit">Crea Post</button>
         </form>
     );
 }
