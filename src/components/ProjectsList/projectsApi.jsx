@@ -53,7 +53,7 @@ function Projects() {
             <div className="grid">
 
 
-                <div className="col-100 flex-end pt-3">
+                <div className="col-100 pt-3">
                     <PostForm onSubmit={handlePostSubmit} />
                     {/* <div className="over-hidden">
 

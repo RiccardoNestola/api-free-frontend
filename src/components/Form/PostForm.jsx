@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { React, useState } from 'react';
+import "./PostForm.css"
 
 function PostForm({ onSubmit }) {
     const [title, setTitle] = useState('');
@@ -14,7 +15,7 @@ function PostForm({ onSubmit }) {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="form-container">
             <div>
                 <label>Titolo:</label>
                 <input
